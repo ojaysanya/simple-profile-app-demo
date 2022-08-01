@@ -48,7 +48,7 @@ pipeline {
                         
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
-                        sh 'git push -u origin main'
+                        sh 'git push -u origin HEAD:main'
                     }
                 }
             }
