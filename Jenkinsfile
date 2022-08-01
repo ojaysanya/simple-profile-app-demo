@@ -24,7 +24,7 @@ pipeline {
             steps {
                script {
                     dir("app") {
-                        # install all dependencies needed for running tests
+                        
                         sh "npm install"
                         sh "npm run test"
                     } 
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USER', passwordVariable: 'PWD')]) {
-                        # git config here for the first time run
+                        
                         sh 'git config --global user.email "jenkins@example.com"'
                         sh 'git config --global user.name "ojaysanya"'
 
