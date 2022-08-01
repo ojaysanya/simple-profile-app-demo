@@ -7,7 +7,6 @@ pipeline {
         stage('increment version') {
             steps {
                 script {
-                    # enter app directory, because that's where package.json is located
                     dir("app") {
                         # update application version in the package.json file with one of these release types: patch, minor or major
                         # this will commit the version update
@@ -30,7 +29,6 @@ pipeline {
         stage('Run tests') {
             steps {
                script {
-                    enter app directory, because that's where package.json and tests are located
                     dir("app") {
                         # install all dependencies needed for running tests
                         sh "npm install"
@@ -41,7 +39,7 @@ pipeline {
         }
         stage('Build and Push docker image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')]){
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVariable: 'USER', passwordVariable: 'PWD')]){
                     sh "docker build -t ojaysanya/myapp:${IMAGE_NAME} ."
                     sh "echo ${PWD} | docker login -u ${USER} --password-stdin"
                     sh "docker push ojaysanya/myapp:${IMAGE_NAME}"
