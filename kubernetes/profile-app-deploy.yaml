@@ -21,6 +21,6 @@ spec:
     spec:
       containers:
         - name: simple-app
-          image: poly4concept/simple-profile-app
+          image: poly4concept/simple-profile-app:latest 
           ports:
             - containerPort: 3000
