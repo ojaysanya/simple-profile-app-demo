@@ -51,7 +51,8 @@ pipeline {
                         sh 'git commit -m "ci version bump"'
                         
                         sh "git remote set-url origin https://github.com/ojaysanya/version-bump.git"
-                        sh 'git push -u origin master'
+                        sh 'git branch -M master'
+                        sh 'git push -u origin HEAD:master'
                     }
                 }
             }
