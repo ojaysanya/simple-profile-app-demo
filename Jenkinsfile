@@ -50,7 +50,7 @@ pipeline {
                     
                         sh 'git commit -m "ci version bump"'
                         
-                        sh "git remote add origin https://github.com/ojaysanya/version-bump.git"
+                        sh "git remote set-url origin https://github.com/ojaysanya/version-bump.git"
                         sh 'git push -u origin main'
                     }
                 }
