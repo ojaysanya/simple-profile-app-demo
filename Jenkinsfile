@@ -10,7 +10,7 @@ pipeline {
                     dir("app") {
                         sh 'npm version minor'
                         def version = sh (returnStdout: true, script: "grep 'version' package.json | cut -d '\"' -f4 | tr '\\n' '\\0'")
-                        env.IMAGE_NAME = "$version"
+                        env.IMAGE_NAME = "$BUILD_NUMBER"
 
                     }
                 }
