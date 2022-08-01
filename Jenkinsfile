@@ -36,23 +36,13 @@ pipeline {
                 }
             }
         }
-        stage('commit version update') {
+        stage('Deploy to EC2 Instance') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USER', passwordVariable: 'PWD')]) {
-                        
-                        sh 'git config --global user.email "presidentsanya@gmail.com"'
-                        sh 'git config --global user.name "ojaysanya"'
-                        sh 'git init'
-                        
-                        
-                        sh 'git add .'
-                    
-                        sh 'git commit -m "ci version bump"'
-                        
-                        sh "git remote set-url origin https://github.com/ojaysanya/version-bump.git"
-                        sh 'git branch -M master'
-                        sh 'git push -u origin master'
+                    def dockerComposeCmd = "docker-compose -f docker-compose.yaml up --detach"
+                    sshagent(['ec2-user-key']) {
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.214.230.83 ${dockerCmd}"
+
                     }
                 }
             }
