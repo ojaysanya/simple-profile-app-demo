@@ -52,7 +52,7 @@ pipeline {
                         
                         sh "git remote set-url origin https://github.com/ojaysanya/version-bump.git"
                         sh 'git branch -M master'
-                        sh 'git push -u origin HEAD:master'
+                        sh 'git push -u origin master'
                     }
                 }
             }
