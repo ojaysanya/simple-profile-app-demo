@@ -11,7 +11,7 @@ spec:
   ports:
   - port: 8081
     targetPort: 8081
-    nodePort: 30004
+    nodePort: 30001
   selector:
     name: mongoexpress-pod
     app: profile-app
