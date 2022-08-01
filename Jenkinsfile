@@ -43,8 +43,9 @@ pipeline {
                         
                         sh 'git config --global user.email "presidentsanya@gmail.com"'
                         sh 'git config --global user.name "ojaysanya"'
-
-                        sh "git remote set-url origin https://gitlab.com/ojaysanya/jenkins-simple-profile-app.git"
+                        sh 'git init --initial-branch=main'
+                        sh 'git remote add origin git@gitlab.com:ojaysanya/jenkins-simple-profile-app.git'
+                        
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
                         sh 'git push -u origin main'
