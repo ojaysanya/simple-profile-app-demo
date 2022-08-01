@@ -41,13 +41,13 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USER', passwordVariable: 'PWD')]) {
                         
-                        sh 'git config --global user.email "jenkins@example.com"'
+                        sh 'git config --global user.email "presidentsanya@gmail.com"'
                         sh 'git config --global user.name "ojaysanya"'
 
-                        sh "git remote set-url origin https://${USER}:${PWD}@gitlab.com/devops-bootcamp3/node-project.git"
+                        sh "git remote set-url origin https://gitlab.com/ojaysanya/jenkins-simple-profile-app.git"
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
-                        sh 'git push origin HEAD:jenkins-jobs'
+                        sh 'git push origin HEAD:master'
                     }
                 }
             }
